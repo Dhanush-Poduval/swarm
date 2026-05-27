@@ -151,13 +151,13 @@ ixy="0" ixz="0" iyz="0"/>
 
     <visual>
         <geometry>
-            <sphere radius="${r/2}"/>
+            <sphere radius="${r}"/>
         </geometry>
     </visual>
 
     <collision>
         <geometry>
-            <sphere radius="${r/2}"/>
+            <sphere radius="${r}"/>
         </geometry>
     </collision>
 
@@ -185,6 +185,12 @@ ixy="0" ixz="0" iyz="0"/>
             <cylinder radius="0.1" length="0.1"/>
         </geometry>
   </visual>
+  <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <cylinder radius="0.1" length="0.1" />
+        </geometry>
+  </collision>      
 
   <inertial>
         <mass value="1e-6"/>
@@ -196,7 +202,7 @@ ixy="0" ixz="0" iyz="0"/>
 <joint name="lidar_joint" type="fixed">
     <parent link="body_link"/>
     <child link="lidar_link"/>
-    <origin xyz="0 0 ${b+r}" rpy="0 0 0"/>
+    <origin xyz="0 0 ${s1+0.05}" rpy="1.5708 0 0"/>
     <axis xyz="0 1 0" rpy="0 0 0" />
 </joint>
 </robot>
