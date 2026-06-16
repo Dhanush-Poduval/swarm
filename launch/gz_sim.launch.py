@@ -8,7 +8,7 @@ from launch_ros.actions import Node
 import xacro
 
 def generate_launch_description():
-    robotXacroName= 'diff_drive_robot'
+    robotXacroName= ''
     namePackage='lidar_robot'
     modelFileRelativePath='model/robot.xacro'
     pathModelFile=os.path.join(get_package_share_directory(namePackage),modelFileRelativePath)
@@ -42,6 +42,19 @@ def generate_launch_description():
             ],
             output='screen'
     )
+    #static bridge as gazeebo was sending in another patter to tf2 in slambox 
+    node_static_tf_bridge = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='gazebo_lidar_tf_bridge',
+        arguments=[
+            '0', '0', '0',      
+            '0', '0', '0',     
+            'base_link',                     
+            'diff_robot/base_link/gpu_lidar' 
+        ],
+        parameters=[{'use_sim_time': True}]
+    )
     start_async_slam_toolbox_node = Node(
         package='slam_toolbox',
         executable='async_slam_toolbox_node',
@@ -59,4 +72,5 @@ def generate_launch_description():
     launchDescriptionObject.add_action(nodeRobotStatePublisher)
     launchDescriptionObject.add_action(start_gazebo_ros_bridge_cmd)
     launchDescriptionObject.add_action(start_async_slam_toolbox_node)
+    launchDescriptionObject.add_action(node_static_tf_bridge)
     return launchDescriptionObject

@@ -1,3 +1,15 @@
-slam_toolbox:
+/**:
   ros__parameters:
     use_sim_time: true
+    autostart: true 
+
+    odom_frame: odom 
+    map_frame: map 
+    base_frame: base_link    
+    scan_topic: /scan 
+
+    #this is for the data overflow at the queue and time issue
+    transform_publish_period: 0.05   
+    transform_timeout: 0.5          
+    scan_buffer_size: 20            
+    minimum_time_interval: 0.1
