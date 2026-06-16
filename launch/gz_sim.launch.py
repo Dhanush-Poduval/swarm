@@ -42,10 +42,19 @@ def generate_launch_description():
             ],
             output='screen'
     )
+    slam_toolbox_launch=IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                os.path.join(get_package_share_directory('slam_toolbox'),'launch','online_async_launch.py')
+            ),
+            launch_arguments={
+                'use_sime_time':'true'
+            }.items()
+    )
     launchDescriptionObject=LaunchDescription()
 
     launchDescriptionObject.add_action(gazeboLaunch)
     launchDescriptionObject.add_action(spawnModelNodeGazebo)
     launchDescriptionObject.add_action(nodeRobotStatePublisher)
     launchDescriptionObject.add_action(start_gazebo_ros_bridge_cmd)
+    launchDescriptionObject.add_action(slam_toolbox_launch)
     return launchDescriptionObject

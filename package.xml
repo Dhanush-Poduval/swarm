@@ -17,6 +17,7 @@
   <depend>ros_gz</depend>
   <depend>ros_gz_sim</depend>
   <depend>ros_gz_bridge</depend>
+  <depend>slam_toolbox</depend>
   <export>
     <build_type>ament_python</build_type>
   </export>
