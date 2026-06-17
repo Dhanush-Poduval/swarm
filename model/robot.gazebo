@@ -64,11 +64,11 @@
 <gazebo>
   <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
   <!--wheels -->
-    <right_joint>right_wheel_joint</right_joint>
-    <left_joint>left_wheel_joint</left_joint>
+    <right_joint>left_wheel_joint</right_joint>
+    <left_joint>right_wheel_joint</left_joint>
   <!--kinematics-->
-    <wheel_separation>${2*s4}</wheel_separation>
-    <wheel_diameter>${2*r}</wheel_diameter>
+    <wheel_separation>0.66</wheel_separation>
+    <wheel_diameter>0.3</wheel_diameter>
   <!--limits-->
     <max_linear_acc>10</max_linear_acc>
   <!--topics-->
