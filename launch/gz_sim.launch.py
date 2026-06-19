@@ -13,8 +13,9 @@ def generate_launch_description():
     modelFileRelativePath='model/robot.xacro'
     pathModelFile=os.path.join(get_package_share_directory(namePackage),modelFileRelativePath)
     robotDescription=xacro.process_file(pathModelFile).toxml()
+    gazeebo_world=os.path.join(get_package_share_directory(namePackage),'world','obstacle_world.sdf')
     gazebo_rosPackageLaunch=PythonLaunchDescriptionSource(os.path.join(get_package_share_directory('ros_gz_sim'),'launch','gz_sim.launch.py'))
-    gazeboLaunch=IncludeLaunchDescription(gazebo_rosPackageLaunch,launch_arguments={'gz_args':['-r -v -v4 empty.sdf'],'on_exit_shutdown':'true'}.items())
+    gazeboLaunch=IncludeLaunchDescription(gazebo_rosPackageLaunch,launch_arguments={'gz_args':[f'-r -v -v4 {gazeebo_world}'],'on_exit_shutdown':'true'}.items())
     spawnModelNodeGazebo=Node(
         package="ros_gz_sim",
         executable='create',

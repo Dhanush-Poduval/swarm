@@ -66,11 +66,6 @@
       <pose>0 0 0 0 0 0</pose>
       <self_collide>false</self_collide>
     </model>
-    <include>
-      <uri>file://<urdf-string></uri>
-      <name>diff_robot</name>
-      <pose>5.4533898443545965 -3.4502176662912545 4.0997480754023489e-08 -2.5346137033257069e-07 1.6676836880976944e-07 -2.845679593666735</pose>
-    </include>
     <model name='box'>
       <pose>3.2260732418397327 -0.11966607249215507 0.49999999019985542 1.9471314888588288e-08 9.7099300777501013e-11 0.028102489282099487</pose>
       <link name='box_link'>
